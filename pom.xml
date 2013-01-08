@@ -10,9 +10,9 @@
     <repositories>
         <repository>
             <id>bukkit</id>
-            <name>Bukkit Artifactory</name>
+            <name>Bukkit Nexus</name>
             <layout>default</layout>
-            <url>http://repo.bukkit.org/content/groups/bukkit_repos/</url>
+            <url>http://repo.bukkit.org/content/groups/public/</url>
         </repository>
         <repository>
             <id>Plugin Metrics</id>
