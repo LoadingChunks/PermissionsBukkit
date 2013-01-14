@@ -186,7 +186,6 @@ public class PermissionsPlugin extends JavaPlugin {
     }
 
     protected void refreshPermissions() {
-        saveConfig();
         for (String player : permissions.keySet()) {
             PermissionAttachment attachment = permissions.get(player);
             for (String key : attachment.getPermissions().keySet()) {
