@@ -196,6 +196,17 @@ public class PermissionsPlugin extends JavaPlugin {
         }
     }
     
+    protected void refreshPermissions(String player) {
+    	if(permissions.containsKey(player)) {
+    		PermissionAttachment attachment = permissions.get(player);
+    		for(String key : attachment.getPermissions().keySet()) {
+    			attachment.unsetPermission(key);
+    		}
+    	}
+    	
+    	calculateAttachment(getServer().getPlayer(player));
+    }
+    
     protected ConfigurationSection getNode(String node) {
         for (String entry : getConfig().getKeys(true)) {
             if (node.equalsIgnoreCase(entry) && getConfig().isConfigurationSection(entry)) {
@@ -347,5 +358,6 @@ public class PermissionsPlugin extends JavaPlugin {
 
         return perms;
     }
+
 
 }

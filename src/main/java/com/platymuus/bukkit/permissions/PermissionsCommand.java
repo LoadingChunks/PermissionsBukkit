@@ -354,6 +354,15 @@ class PermissionsCommand implements CommandExecutor {
             	sender.sendMessage(ChatColor.GREEN + "Grabbing user list...");
             List<String> list = plugin.getNode("users/" + player).getStringList("groups");
             
+            if(group.equalsIgnoreCase("all"))
+            {
+            	list.clear();
+            	plugin.getNode("users/" + player).set("groups", list);
+            	plugin.refreshPermissions(player);
+                sender.sendMessage(ChatColor.GREEN + "Player " + ChatColor.WHITE + player + ChatColor.GREEN + " is no longer in any group.");
+            	return true;
+            }
+            
             if(!(sender instanceof Player))
             	sender.sendMessage(ChatColor.GREEN + "Checking presence...");
             if (!list.contains(group)) {
