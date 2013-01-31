@@ -327,13 +327,21 @@ class PermissionsCommand implements CommandExecutor {
             if (plugin.getNode("users/" + player) == null) {
                 createPlayerNode(player);
             }
-            
+
             List<String> list = plugin.getNode("users/" + player).getStringList("groups");
             if (list.contains(group)) {
                 sender.sendMessage(ChatColor.GREEN + "Player " + ChatColor.WHITE + player + ChatColor.GREEN + " was already in " + ChatColor.WHITE + group + ChatColor.GREEN + ".");
                 return true;
             }
-            list.add(group);
+            
+            if(group.contains(",")) {
+            	String[] groups = group.split(",");
+            	for(String g : groups) {
+            		list.add(g);
+            	}
+            } else {
+            	list.add(group);
+            }
             plugin.getNode("users/" + player).set("groups", list);
             
             plugin.refreshPermissions();
