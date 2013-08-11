@@ -231,6 +231,9 @@ public class PermissionsPlugin extends JavaPlugin {
         HashMap<String, Boolean> result = new HashMap<String, Boolean>();
         ConfigurationSection node = getNode(path);
         
+        if(node == null)
+            return new HashMap<String, Boolean>();
+        
         int failures = 0;
         String firstFailure = "";
 
